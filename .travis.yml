@@ -1,36 +1,39 @@
+---
 language: node_js
-
 node_js:
 - '0.10'
-
 jdk:
 - oraclejdk7
-
 before_script:
 - npm install -g grunt-cli
-
 before_install:
-  # install Neo4j locally:
-  - wget dist.neo4j.org/neo4j-community-2.1.7-unix.tar.gz
-  - tar -xzf neo4j-community-2.1.7-unix.tar.gz
-  - neo4j-community-2.1.7/bin/neo4j start
-
+- wget dist.neo4j.org/neo4j-community-2.1.7-unix.tar.gz
+- tar -xzf neo4j-community-2.1.7-unix.tar.gz
+- neo4j-community-2.1.7/bin/neo4j start
 addons:
   sauce_connect: true
-
 before_deploy:
-  - neo4j-community-2.1.7/bin/neo4j stop
-  - rm -rf neo4j-community-2.1.7 neo4j-community-2.1.7-unix.tar.gz
-
+- neo4j-community-2.1.7/bin/neo4j stop
+- rm -rf neo4j-community-2.1.7 neo4j-community-2.1.7-unix.tar.gz
 deploy:
   provider: heroku
-  app: movie-database-node
+  app: agilejs-team-3
   skip_cleanup: true
   api_key:
-    secure: LfX4hB0xQv9z4ZD+Iiz0tffiNceHyB4/wfeFacra7m9xLpjtpqOmBvbQGzl3 3EGek2clup/ri2RHHQm5QCqK5L8ohptvHSoBusghHmXyV80knIb8mlnpmwMe
-      7Vs7v9wdALHudWPHly9pN0OZHxYsRprQc8R6b2rowAdMxzMraDg=
+    secure: ! 'ncCAxXR1K7wGus6oUIVPGgjfaHTvYcqb7uoSh9OhV3vAD9gX2ZXwJaEY/G5r
 
+      Gc79HhFm5BA0HAhM/AWnpi6yt7RYDCnAZ+CCNQIV7dXRcGWHL8hG/jrzS2Ab
+
+      f/lXNRQyJ5wsn3OQPT7YZnfzmtVcWZY2CjyUHpI/3BkV0LKg7/Y='
 env:
   global:
-  - secure: Z2rM2Fbhaa/9UO8w8wXbxkgm6onNMwe7eu81G0w5Brhi+ZQbZMVNIjVBcg2cs0oQdF2JiA+iWSM9fwDKriZQVbbscbBiWqn76GEG8uBQthkC5jU+bMP4yaQYVW5VzeF7ADc+FA0mTDshfYWWuhfI8a/l9mWgdAe+2qM0NETA+WA=
-  - secure: YcUv/8DgUrLxjZ0po91oH8Z+GSzsF71qbDUf23ncUBEw/Ui0Stcyd/62i+JXwwlg5zUCaAsN5G0YrVjMGmlbP3yAy6LolChfU3oSCkkjfJlf4WMDQD3ykSl0Euyhgxr2d6UHEfBz4wK1sU7IU+ONB9mcNeAn0bxfu5quYKkq+iI=
+  - secure: ! 'SwesoGk74kUecVt1D8v+lr30lFjjKKIvv83hBykCYpfMFy1JZ9UPl6DmPd7H
+
+      Lesng/m+iZloiaFhsXyxNhgYPkgTF2pKUORl8UwFCeDQ5jM8YpPLKj1B3Jw3
+
+      6netNLODWeBaKdOgeEjq7Qlrp7adz5Ouy4q+o+TsCAIZBLevpCA='
+  - secure: ! 'pWfkIOUEoGry0TtR+aBTzOFlgAGtF5y6D/UOMIykobId21F5fxd4gIGWUjWV
+
+      Gup9iJXC1A0yDlG7MXFDMz6Jkwc2v+M5lyVRRnlftAo8on1hUBir+ybPRVS5
+
+      JoSjNlxUfM903OPVpMQxJQSvQJfn0n30s5auMvKV2F2rTJlPkd0='
