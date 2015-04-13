@@ -3,18 +3,29 @@ language: node_js
 node_js:
 - '0.10'
 
-services:
-- neo4j
+jdk:
+- oraclejdk7
 
 before_script:
 - npm install -g grunt-cli
 
+before_install:
+  # install Neo4j locally:
+  - wget dist.neo4j.org/neo4j-community-2.1.7-unix.tar.gz
+  - tar -xzf neo4j-community-2.1.7-unix.tar.gz
+  - neo4j-community-2.1.7/bin/neo4j start
+
 addons:
   sauce_connect: true
+
+before_deploy:
+  - neo4j-community-2.1.7/bin/neo4j stop
+  - rm -rf neo4j-community-2.1.7 neo4j-community-2.1.7-unix.tar.gz
 
 deploy:
   provider: heroku
   app: movie-database-node
+  skip_cleanup: true
   api_key:
     secure: LfX4hB0xQv9z4ZD+Iiz0tffiNceHyB4/wfeFacra7m9xLpjtpqOmBvbQGzl3 3EGek2clup/ri2RHHQm5QCqK5L8ohptvHSoBusghHmXyV80knIb8mlnpmwMe
       7Vs7v9wdALHudWPHly9pN0OZHxYsRprQc8R6b2rowAdMxzMraDg=
