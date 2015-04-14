@@ -21,6 +21,16 @@ function MoviesListCtrl ($scope, $location, moviesResponse) {
     $scope.add = function () {
         $location.path('/movies/new');
     };
+
+    $scope.reverse = true;
+    $scope.toggle = function ($col) {
+        $scope.reverse = !$scope.reverse;
+        if ($col === 0){
+            $scope.sort = 'title';
+        }else{
+            $scope.sort = 'releaseYear';
+        }
+    };
 }
 
 MoviesListCtrl.resolve = {
