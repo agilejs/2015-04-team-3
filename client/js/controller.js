@@ -14,13 +14,10 @@ function WelcomeCtrl ($scope, $location, moviesResponse) {
     'use strict';
     $scope.movies = moviesResponse.data;
     $scope.reverse = false;
+    $scope.sortCol = 'title';
     $scope.toggle = function ($col) {
         $scope.reverse = !$scope.reverse;
-        if ($col === 0){
-            $scope.sort = 'title';
-        }else{
-            $scope.sort = 'releaseYear';
-        }
+        $scope.sortCol = $col;
     };
 }
 
@@ -30,15 +27,11 @@ function MoviesListCtrl ($scope, $location, moviesResponse) {
     $scope.add = function () {
         $location.path('/movies/new');
     };
-
     $scope.reverse = false;
+    $scope.sortCol = 'title';
     $scope.toggle = function ($col) {
         $scope.reverse = !$scope.reverse;
-        if ($col === 0){
-            $scope.sort = 'title';
-        }else{
-            $scope.sort = 'releaseYear';
-        }
+        $scope.sortCol = $col;
     };
 }
 
