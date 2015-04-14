@@ -78,5 +78,13 @@ describe('Movies', function() {
         movieOverview.movieTitles.then(function(elements) {
             expect(elements.length).toEqual(6);
         });
+
+// TODO in it auslagern
+        var searchBox = element(by.css('#globalsearch'));
+        searchBox.sendKeys("Undisputed");
+        movieOverview.movieTitles.then(function(elements) {
+            expect(elements.length).toEqual(1);
+        });
+
     }, 60000);
 });
