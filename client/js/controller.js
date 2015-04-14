@@ -3,6 +3,13 @@ function AppCtrl ($scope) {
     $scope.title = 'The Movie Database';
 }
 
+function HeaderCtrl($scope, $location){
+    'use strict';
+    $scope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
+}
+
 function WelcomeCtrl ($scope, $location, moviesResponse) {
     'use strict';
     $scope.movies = moviesResponse.data;
