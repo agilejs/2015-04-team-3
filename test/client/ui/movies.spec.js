@@ -81,7 +81,7 @@ describe('Movies', function() {
 
 // TODO in it auslagern
         var searchBox = element(by.css('#globalsearch'));
-        searchBox.sendKeys("Undisputed");
+        searchBox.sendKeys('Undisputed');
         movieOverview.movieTitles.then(function(elements) {
             expect(elements.length).toEqual(1);
         });
