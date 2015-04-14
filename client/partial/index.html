@@ -4,11 +4,11 @@
     <thead>
         <!--<input type="text" ng-model="query">-->
         <tr>
-            <th ng-click="toggle(0)">Title  </th>
+            <th ng-click="toggle(0)">Title</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="movie in movies | orderBy:'title':reverseSort | filter: $parent.query" >
+        <tr ng-repeat="movie in movies | orderBy:sort:reverse | filter: $parent.query"" >
             <td>
                 <a href="#" ng-href="/movies/{{movie.id}}">
                     {{movie.title}}
